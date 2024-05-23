@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DXKuma.Backend", "src\DXKuma.Backend.csproj", "{51A7609F-F7EC-4D8C-89FD-E8DF06B356DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{51A7609F-F7EC-4D8C-89FD-E8DF06B356DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{51A7609F-F7EC-4D8C-89FD-E8DF06B356DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{51A7609F-F7EC-4D8C-89FD-E8DF06B356DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{51A7609F-F7EC-4D8C-89FD-E8DF06B356DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
