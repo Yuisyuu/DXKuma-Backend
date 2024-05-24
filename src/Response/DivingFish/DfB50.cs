@@ -8,7 +8,7 @@ public class DfB50
     public int AdditionalRating { get; set; }
     
     [JsonPropertyName("charts")]
-    public DfCharts Charts { get; set; }
+    public DfCharts? Charts { get; set; }
     
     [JsonPropertyName("nickname")]
     public string? Nickname { get; set; }

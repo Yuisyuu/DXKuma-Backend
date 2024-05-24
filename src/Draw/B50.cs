@@ -6,9 +6,9 @@ namespace DXKuma.Backend.Draw;
 
 public static class B50
 {
-    public static Task<IResult> DrawAsync(this LxnsB50 b50)
+    public static Task<IResult> DrawAsync(LxnsB50 b50, LxnsPlayer userInfo)
     {
-        return DrawAsync(b50.Convert(), null);
+        return DrawAsync(b50.Convert(), userInfo.Convert());
     }
     private static Task<IResult> DrawAsync(CommonB50 b50, CommonUserInfo userInfo)
     {

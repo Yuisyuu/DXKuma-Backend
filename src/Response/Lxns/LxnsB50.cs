@@ -24,7 +24,7 @@ public class LxnsB50
             Standard = [],
             Dx = []
         };
-        foreach (var score in Standard)
+        foreach (var score in Standard!)
         {
             var commonScore = new CommonScore
             {
@@ -40,9 +40,9 @@ public class LxnsB50
             };
             b50.Standard.Add(commonScore);
         }
-        foreach (var score in Dx)
+        foreach (var score in Dx!)
         {
-            var commonScore = new CommonScore()
+            var commonScore = new CommonScore
             {
                 Id = score.Id,
                 Achievements = score.Achievements,

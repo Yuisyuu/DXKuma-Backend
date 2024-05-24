@@ -1,3 +1,4 @@
+using DXKuma.Backend.Common;
 using System.Text.Json.Serialization;
 
 namespace DXKuma.Backend.Response.Lxns;
@@ -29,14 +30,27 @@ public class LxnsPlayer
     public int Star { get; set; }
     
     [JsonPropertyName("icon")]
-    public LxnsIcon? Icon { get; set; }
+    public LxnsCollection? Icon { get; set; }
     
     [JsonPropertyName("name_plate")]
-    public LxnsNamePlate? NamePlate { get; set; }
+    public LxnsCollection? NamePlate { get; set; }
     
     [JsonPropertyName("frame")]
-    public LxnsFrame? Frame { get; set; }
+    public LxnsCollection? Frame { get; set; }
     
     [JsonPropertyName("upload_time")]
     public string? UploadTime { get; set; }
+
+    public CommonUserInfo Convert()
+    {
+        return new()
+        {
+            ClassRank = ClassRank,
+            CourseRank = CourseRank,
+            FrameId = Frame?.Id ?? 0,
+            IconId = Icon?.Id ?? 0,
+            Name = Name,
+            NamePlateId = NamePlate?.Id ?? 0
+        };
+    }
 }
