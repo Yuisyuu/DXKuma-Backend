@@ -26,7 +26,8 @@ app.MapGet("/b50/Lxns/{qq}", async (string qq) =>
         LxnsProber prober = new(qq, key);
         LxnsB50 b50 = await prober.GetB50Async();
         LxnsPlayer userInfo = await prober.GetUserInfoAsync();
-        IResult img = await B50.DrawAsync(b50, userInfo);
+        string? imgConfig = app.Configuration["Image.B50"];
+        IResult img = await B50.DrawAsync(b50, userInfo, imgConfig);
         return img;
     })
     .WithName("DXKuma")
