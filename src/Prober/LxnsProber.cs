@@ -4,8 +4,9 @@ namespace DXKuma.Backend.Prober;
 
 public class LxnsProber
 {
-    private readonly LxnsPlayer _userInfo;
+    private const string BaseUrl = "https://maimai.lxns.net/api/v0/maimai";
     private readonly HttpClient _httpClient;
+    private readonly LxnsPlayer _userInfo;
 
     public LxnsProber(string qq, string apiKey)
     {
@@ -15,8 +16,6 @@ public class LxnsProber
         _userInfo = GetAsync<LxnsPlayer>(url).Result;
     }
 
-    private const string BaseUrl = "https://maimai.lxns.net/api/v0/maimai";
-    
     private async Task<T> GetAsync<T>(string url)
     {
         HttpResponseMessage response = await _httpClient.GetAsync(url);
@@ -26,9 +25,10 @@ public class LxnsProber
         {
             throw new SystemException(result?.Message);
         }
+
         return result.Data;
     }
-    
+
     public async Task<LxnsB50> GetB50Async()
     {
         string url = $"{BaseUrl}/player/{_userInfo.FriendCode}/bests";

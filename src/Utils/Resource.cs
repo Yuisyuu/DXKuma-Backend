@@ -4,24 +4,19 @@ namespace DXKuma.Backend.Utils;
 
 public static class Resource
 {
-    private class Cache
-    {
-        public int Id { get; set; }
-        public DateTime CacheTime { get; set; }
-    }
-    
-    private static readonly LiteDatabase s_db;
-    
     private const string BaseUrl = "https://assets2.lxns.net/maimai";
 
     private const string CacheDirPath = "Cache";
-    
+
+    private static readonly LiteDatabase s_db;
+
     static Resource()
     {
         if (!Directory.Exists(CacheDirPath))
         {
             Directory.CreateDirectory(CacheDirPath);
         }
+
         s_db = new("Cache.db");
     }
 
@@ -33,6 +28,7 @@ public static class Resource
         {
             return Task.FromResult(false);
         }
+
         ILiteCollection<Cache> col = s_db.GetCollection<Cache>(type);
         Cache cache = col.FindById(id);
         if (cache is not null && DateTime.UtcNow - cache.CacheTime < TimeSpan.FromDays(1))
@@ -42,7 +38,6 @@ public static class Resource
 
         File.Delete(fullPath);
         return Task.FromResult(false);
-
     }
 
     private static async Task<byte[]> GetAsync(string type, int id)
@@ -53,12 +48,14 @@ public static class Resource
         {
             return await File.ReadAllBytesAsync(path);
         }
+
         using HttpClient httpClient = new();
         byte[] img = await httpClient.GetByteArrayAsync($"{BaseUrl}/{type}/{id}.png");
         if (!Directory.Exists(dirPath))
         {
             Directory.CreateDirectory(dirPath);
         }
+
         await File.WriteAllBytesAsync(path, img);
         return img;
     }
@@ -76,5 +73,11 @@ public static class Resource
     public static async Task<byte[]> GetJacketAsync(int id)
     {
         return await GetAsync("jacket", id);
+    }
+
+    private class Cache
+    {
+        public int Id { get; set; }
+        public DateTime CacheTime { get; set; }
     }
 }

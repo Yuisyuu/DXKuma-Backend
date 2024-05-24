@@ -22,6 +22,7 @@ app.MapGet("/b50/Lxns/{qq}", async (string qq) =>
         {
             return Results.StatusCode(404);
         }
+
         LxnsProber prober = new(qq, key);
         LxnsB50 b50 = await prober.GetB50Async();
         LxnsPlayer userInfo = await prober.GetUserInfoAsync();

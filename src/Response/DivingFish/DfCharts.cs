@@ -4,9 +4,7 @@ namespace DXKuma.Backend.Response.DivingFish;
 
 public class DfCharts
 {
-    [JsonPropertyName("dx")]
-    public DfScore[]? Dx { get; set; }
-    
-    [JsonPropertyName("sd")]
-    public DfScore[]? Standard { get; set; }
+    [JsonPropertyName("dx")] public DfScore[]? Dx { get; set; }
+
+    [JsonPropertyName("sd")] public DfScore[]? Standard { get; set; }
 }

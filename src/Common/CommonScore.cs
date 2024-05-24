@@ -8,7 +8,7 @@ public class CommonScore
     public int Id { get; set; }
 
     public LxnsSongType Type { get; set; }
-    
+
     public LevelIndex LevelIndex { get; set; }
 
     public float Achievements { get; set; }

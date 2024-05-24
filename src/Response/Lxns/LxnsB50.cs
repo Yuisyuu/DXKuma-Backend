@@ -5,28 +5,24 @@ namespace DXKuma.Backend.Response.Lxns;
 
 public class LxnsB50
 {
-    [JsonPropertyName("standard_total")]
-    public int StandardTotal { get; set; }
-    
-    [JsonPropertyName("dx_total")]
-    public int DxTotal { get; set; }
-    
-    [JsonPropertyName("standard")]
-    public LxnsScore[]? Standard { get; set; }
-    
-    [JsonPropertyName("dx")]
-    public LxnsScore[]? Dx { get; set; }
+    [JsonPropertyName("standard_total")] public int StandardTotal { get; set; }
+
+    [JsonPropertyName("dx_total")] public int DxTotal { get; set; }
+
+    [JsonPropertyName("standard")] public LxnsScore[]? Standard { get; set; }
+
+    [JsonPropertyName("dx")] public LxnsScore[]? Dx { get; set; }
 
     public CommonB50 Convert()
     {
-        var b50 = new CommonB50
+        CommonB50 b50 = new()
         {
             Standard = [],
             Dx = []
         };
-        foreach (var score in Standard!)
+        foreach (LxnsScore score in Standard!)
         {
-            var commonScore = new CommonScore
+            CommonScore commonScore = new()
             {
                 Id = score.Id,
                 Achievements = score.Achievements,
@@ -40,9 +36,10 @@ public class LxnsB50
             };
             b50.Standard.Add(commonScore);
         }
-        foreach (var score in Dx!)
+
+        foreach (LxnsScore score in Dx!)
         {
-            var commonScore = new CommonScore
+            CommonScore commonScore = new()
             {
                 Id = score.Id,
                 Achievements = score.Achievements,

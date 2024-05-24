@@ -10,6 +10,7 @@ public static class B50
     {
         return DrawAsync(b50.Convert(), userInfo.Convert());
     }
+
     private static Task<IResult> DrawAsync(CommonB50 b50, CommonUserInfo userInfo)
     {
         throw new NotImplementedException();
